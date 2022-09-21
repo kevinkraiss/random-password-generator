@@ -9,22 +9,26 @@ var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 var lowerCase = 'abcdefghijklmnopqrstuvwxyz'
 var nums = '1234567890'
 var specChar = '!@#$%^&*()'
-var allChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()'
+// var allChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()'
+var selectChars = ''
+var characters = selectChars.split('')
+var result = ''
 
-function randomString() {
-  return allChars[Math.floor(Math.random() * allChars.split('').length)]
+
+
+function randomInt() {
+  return selectChars[Math.floor(Math.random() * selectChars.split('').length)]
   // need to change 'allChars to result of prompts
 }
 
-var characters = allChars.split('')
-var result = ''
-
 function genString() {
+  result = ''
 for (var i = 0; i < passLength; i++) {
-  result += randomString(characters)
+  result += randomInt(characters)
 }
 passwordEl.textContent = result
-console.log(result)
+selectChars = ''
+// console.log(result)
 }
 
 // prompt user for length 8-128
@@ -37,16 +41,42 @@ function prompts() {
   if (userLength >= 8 && userLength <= 128) {
     // console.log('good');
     passLength = userLength;
-    genString()
     // console.log(result)
     
   } else {
     //    console.log('bad');
-    prompt('Your password must be between 8 and 128 characters')
+    alert('Your password must be between 8 and 128 characters')
+    prompts()
+    
   }
+
+  var incUppercase = window.confirm('Include uppercase?')
+  if (incUppercase === true) {
+    selectChars += upperCase
+    console.log(selectChars)
+  }
+
+  var incLowercase = window.confirm('Include lowercase?')
+  if (incLowercase === true) {
+    selectChars += lowerCase
+  }
+
+  var incNum = window.confirm('Include numbers?')
+  if (incNum === true) {
+    selectChars += nums
+  }
+
+  var incSpecchar = window.confirm('Include special characters?')
+  if (incSpecchar === true) {
+    selectChars += specChar
+  }
+
+  genString()
+  
   //console.log(passLength)
   
 }
+//console.log(selectChars)
 //console.log(passLength)
 
 
