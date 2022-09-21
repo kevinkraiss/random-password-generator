@@ -35,6 +35,7 @@ selectChars = ''
 function prompts() {
   var userLength = prompt('Input password length (8-128 characters)')
   // console.log(passLength)
+  
   if (userLength >= 8 && userLength <= 128) {
     // console.log('good');
     passLength = userLength;
@@ -43,7 +44,7 @@ function prompts() {
   } else {
     //    console.log('bad');
     alert('Your password must be between 8 and 128 characters')
-    prompts()
+    return
     
   }
   
