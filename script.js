@@ -18,7 +18,6 @@ var result = ''
 
 function randomInt() {
   return selectChars[Math.floor(Math.random() * selectChars.split('').length)]
-  // need to change 'allChars to result of prompts
 }
 
 function genString() {
@@ -28,10 +27,8 @@ for (var i = 0; i < passLength; i++) {
 }
 passwordEl.textContent = result
 selectChars = ''
-// console.log(result)
 }
 
-// prompt user for length 8-128
 
 
 
@@ -49,38 +46,39 @@ function prompts() {
     prompts()
     
   }
-
+  
   var incUppercase = window.confirm('Include uppercase?')
   if (incUppercase === true) {
     selectChars += upperCase
-    console.log(selectChars)
   }
-
+  
   var incLowercase = window.confirm('Include lowercase?')
   if (incLowercase === true) {
     selectChars += lowerCase
   }
-
+  
   var incNum = window.confirm('Include numbers?')
   if (incNum === true) {
     selectChars += nums
   }
-
+  
   var incSpecchar = window.confirm('Include special characters?')
   if (incSpecchar === true) {
     selectChars += specChar
   }
-
+  
   genString()
   
-  //console.log(passLength)
   
 }
+generateBtn.addEventListener('click', prompts )
+
+
+//console.log(passLength)
 //console.log(selectChars)
 //console.log(passLength)
 
 
-generateBtn.addEventListener('click', prompts )
 
 // prompt user for l.c., u.c., num, spec char
 
